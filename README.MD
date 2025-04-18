@@ -1,16 +1,18 @@
-## ABOUT
+## 🚀 About This Project
 
-The project has goal to challlenge myself to create a solution like trigger.dev where has
-a sdk and allow you to setup functions to execute based cronjob expression without using cronjob libraries.
+This project is a personal challenge to build a solution inspired by [Trigger.dev](https://trigger.dev) — an SDK-based system that allows developers to schedule and run tasks using cron expressions, **without** relying on traditional cron job libraries.
 
-But my solution is focus in application running on serverless container such as: **cloud run** where I the application
-doesn't have interaction the application is stopped, but the problem is the cronjob routines can execute only if the application is running.
+What makes this solution different?  
+It's designed specifically for **serverless containers**, such as **Google Cloud Run**, where applications scale to zero when idle. This creates a challenge: cron jobs can’t run if the application isn’t active.
 
-In my project I resolved it doing the following strategy:
+### 🔧 My Approach
 
-- Your application will expose a URL.
-- The scheduler will notify the URL about the cronjob needs to be executed, when the scheduler send a request the serverless container solution will reactivate the application to process the request.
-- The SDK I created will get the data received from request and finally execute the function.
+Here’s how this project solves the problem:
+
+- Your application exposes a specific HTTP endpoint.
+- A scheduler service sends a request to this endpoint whenever a cron job is due.
+- Serverless platforms like Cloud Run will automatically "wake up" your application to handle the request.
+- A custom-built SDK handles the request and executes the registered function accordingly.
 
 ## TECHNOLOGIES:
 
